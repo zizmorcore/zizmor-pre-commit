@@ -7,7 +7,7 @@
 
 A [pre-commit](https://pre-commit.com/) hook for [Ruff](https://github.com/woodruffw/zizmor).
 
-Distributed as a standalone repository to enable installing Ruff via prebuilt wheels from
+Distributed as a standalone repository to enable installing Zizmor via prebuilt wheels from
 [PyPI](https://pypi.org/project/zizmor/).
 
 ### Using Zizmor with pre-commit
