@@ -5,7 +5,7 @@
 [![image](https://img.shields.io/pypi/pyversions/zizmor/0.8.0.svg)](https://pypi.python.org/pypi/zizmor)
 [![Actions status](https://github.com/woodruffw/zizmor-pre-commit/workflows/main/badge.svg)](https://github.com/woodruffw/zizmor-pre-commit/actions)
 
-A [pre-commit](https://pre-commit.com/) hook for [Ruff](https://github.com/woodruffw/zizmor).
+A [pre-commit](https://pre-commit.com/) hook for [Zizmor](https://github.com/woodruffw/zizmor).
 
 Distributed as a standalone repository to enable installing Zizmor via prebuilt wheels from
 [PyPI](https://pypi.org/project/zizmor/).
