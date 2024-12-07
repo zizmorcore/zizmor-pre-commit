@@ -8,6 +8,8 @@ import urllib3
 from packaging.requirements import Requirement
 from packaging.version import Version
 
+PACKAGE = "zizmor"
+
 
 def main():
     with open(Path(__file__).parent / "pyproject.toml", "rb") as f:
@@ -28,7 +30,7 @@ def main():
 
 
 def get_all_versions() -> list[Version]:
-    response = urllib3.request("GET", "https://pypi.org/pypi/ruff/json")
+    response = urllib3.request("GET", f"https://pypi.org/pypi/{PACKAGE}/json")
     if response.status != 200:
         raise RuntimeError("Failed to fetch versions from pypi")
 
@@ -38,24 +40,24 @@ def get_all_versions() -> list[Version]:
 
 def get_current_version(pyproject: dict) -> Version:
     requirements = [Requirement(d) for d in pyproject["project"]["dependencies"]]
-    requirement = next((r for r in requirements if r.name == "ruff"), None)
-    assert requirement is not None, "pyproject.toml does not have ruff requirement"
+    requirement = next((r for r in requirements if r.name == PACKAGE), None)
+    assert requirement is not None, f"pyproject.toml does not have {PACKAGE} requirement"
 
     specifiers = list(requirement.specifier)
     assert (
         len(specifiers) == 1 and specifiers[0].operator == "=="
-    ), f"ruff's specifier should be exact matching, but `{requirement}`"
+    ), f"{PACKAGE}'s specifier should be exact matching, but `{requirement}`"
 
     return Version(specifiers[0].version)
 
 
 def process_version(version: Version) -> typing.Sequence[str]:
     def replace_pyproject_toml(content: str) -> str:
-        return re.sub(r'"ruff==.*"', f'"ruff=={version}"', content)
+        return re.sub(fr'"{PACKAGE}==.*"', f'"{PACKAGE}=={version}"', content)
 
     def replace_readme_md(content: str) -> str:
         content = re.sub(r"rev: v\d+\.\d+\.\d+", f"rev: v{version}", content)
-        return re.sub(r"/ruff/\d+\.\d+\.\d+\.svg", f"/ruff/{version}.svg", content)
+        return re.sub(fr"/{PACKAGE}/\d+\.\d+\.\d+\.svg", f"/{PACKAGE}/{version}.svg", content)
 
     paths = {
         "pyproject.toml": replace_pyproject_toml,

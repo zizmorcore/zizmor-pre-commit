@@ -1,8 +1,8 @@
 [project]
-name = "ruff-pre-commit"
+name = "zizmor-pre-commit"
 version = "0.0.0"
 dependencies = [
-    "ruff==0.8.2",
+    "zizmor==0.8.0",
 ]
 
 [project.optional-dependencies]
