@@ -1,8 +1,8 @@
-# ruff-pre-commit
+# zizmor-pre-commit
 
 [![image](https://img.shields.io/pypi/v/zizmor/0.8.0.svg)](https://pypi.python.org/pypi/zizmor)
-[![image](https://img.shields.io/pypi/l/ruff/0.8.2.svg)](https://pypi.python.org/pypi/zizmor)
-[![image](https://img.shields.io/pypi/pyversions/ruff/0.8.2.svg)](https://pypi.python.org/pypi/zizmor)
+[![image](https://img.shields.io/pypi/l/zizmor/0.8.0.svg)](https://pypi.python.org/pypi/zizmor)
+[![image](https://img.shields.io/pypi/pyversions/zizmor/0.8.0.svg)](https://pypi.python.org/pypi/zizmor)
 [![Actions status](https://github.com/woodruffw/zizmor-pre-commit/workflows/main/badge.svg)](https://github.com/woodruffw/zizmor-pre-commit/actions)
 
 A [pre-commit](https://pre-commit.com/) hook for [Ruff](https://github.com/woodruffw/zizmor).
