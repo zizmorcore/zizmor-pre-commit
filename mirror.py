@@ -41,7 +41,9 @@ def get_all_versions() -> list[Version]:
 def get_current_version(pyproject: dict) -> Version:
     requirements = [Requirement(d) for d in pyproject["project"]["dependencies"]]
     requirement = next((r for r in requirements if r.name == PACKAGE), None)
-    assert requirement is not None, f"pyproject.toml does not have {PACKAGE} requirement"
+    assert (
+        requirement is not None
+    ), f"pyproject.toml does not have {PACKAGE} requirement"
 
     specifiers = list(requirement.specifier)
     assert (
@@ -53,11 +55,13 @@ def get_current_version(pyproject: dict) -> Version:
 
 def process_version(version: Version) -> typing.Sequence[str]:
     def replace_pyproject_toml(content: str) -> str:
-        return re.sub(fr'"{PACKAGE}==.*"', f'"{PACKAGE}=={version}"', content)
+        return re.sub(rf'"{PACKAGE}==.*"', f'"{PACKAGE}=={version}"', content)
 
     def replace_readme_md(content: str) -> str:
         content = re.sub(r"rev: v\d+\.\d+\.\d+", f"rev: v{version}", content)
-        return re.sub(fr"/{PACKAGE}/\d+\.\d+\.\d+\.svg", f"/{PACKAGE}/{version}.svg", content)
+        return re.sub(
+            rf"/{PACKAGE}/\d+\.\d+\.\d+\.svg", f"/{PACKAGE}/{version}.svg", content
+        )
 
     paths = {
         "pyproject.toml": replace_pyproject_toml,
