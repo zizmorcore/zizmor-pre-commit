@@ -3,4 +3,5 @@
   description: 'Find security issues in GitHub Actions CI/CD setups'
   language: python
   files: \.github/workflows/.*\.yml$
+  require_serial: true
   entry: zizmor
