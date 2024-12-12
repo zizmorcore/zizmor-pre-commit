@@ -10,13 +10,16 @@ jobs:
   build:
     name: main
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed to push back to the repo
     steps:
       - if: ${{ startsWith(github.event_name, 'repository_dispatch') }}
         run: sleep 30
 
       - uses: actions/checkout@v4
         with:
-          persist-credentials: false
+          # NOTE: needed for git operations below
+          persist-credentials: true
 
       - uses: actions/setup-python@v5
         with:
