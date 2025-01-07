@@ -1,8 +1,8 @@
 - id: zizmor
   name: zizmor
-  description: 'Find security issues in GitHub Actions CI/CD setups'
+  description: "Find security issues in GitHub Actions CI/CD setups"
   language: python
   types: [yaml]
-  files: \.github/workflows/.*$
+  files: \.
   require_serial: true
   entry: zizmor
