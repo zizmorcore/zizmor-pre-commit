@@ -2,7 +2,7 @@
 name = "zizmor-pre-commit"
 version = "0.0.0"
 dependencies = [
-    "zizmor==1.5.2",
+    "zizmor==1.6.0",
 ]
 
 [project.optional-dependencies]
