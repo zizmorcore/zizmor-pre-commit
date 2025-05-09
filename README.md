@@ -1,7 +1,7 @@
 # zizmor-pre-commit
 
-[![image](https://img.shields.io/pypi/v/zizmor/1.6.0.svg)](https://pypi.python.org/pypi/zizmor)
-[![image](https://img.shields.io/pypi/l/zizmor/1.6.0.svg)](https://pypi.python.org/pypi/zizmor)
+[![image](https://img.shields.io/pypi/v/zizmor/1.7.0.svg)](https://pypi.python.org/pypi/zizmor)
+[![image](https://img.shields.io/pypi/l/zizmor/1.7.0.svg)](https://pypi.python.org/pypi/zizmor)
 [![Actions status](https://github.com/woodruffw/zizmor-pre-commit/workflows/main/badge.svg)](https://github.com/woodruffw/zizmor-pre-commit/actions)
 
 A [pre-commit](https://pre-commit.com/) hook for [Zizmor](https://github.com/woodruffw/zizmor).
@@ -17,7 +17,7 @@ To run zizmor via pre-commit, add the following to your `.pre-commit-config.yaml
 repos:
 - repo: https://github.com/woodruffw/zizmor-pre-commit
   # Zizmor version.
-  rev: v1.6.0
+  rev: v1.7.0
   hooks:
     # Run the linter.
     - id: zizmor
