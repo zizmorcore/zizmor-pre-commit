@@ -2,20 +2,20 @@
 
 [![image](https://img.shields.io/pypi/v/zizmor/1.7.0.svg)](https://pypi.python.org/pypi/zizmor)
 [![image](https://img.shields.io/pypi/l/zizmor/1.7.0.svg)](https://pypi.python.org/pypi/zizmor)
-[![Actions status](https://github.com/woodruffw/zizmor-pre-commit/workflows/main/badge.svg)](https://github.com/woodruffw/zizmor-pre-commit/actions)
+[![Actions status](https://github.com/zizmorcore/zizmor-pre-commit/workflows/main/badge.svg)](https://github.com/zizmorcore/zizmor-pre-commit/actions)
 
-A [pre-commit](https://pre-commit.com/) hook for [Zizmor](https://github.com/woodruffw/zizmor).
+A [pre-commit](https://pre-commit.com/) hook for [zizmor](https://github.com/zizmorcore/zizmor).
 
-Distributed as a standalone repository to enable installing Zizmor via prebuilt wheels from
+Distributed as a standalone repository to enable installing `zizmor` via prebuilt wheels from
 [PyPI](https://pypi.org/project/zizmor/).
 
-### Using Zizmor with pre-commit
+### Using zizmor with pre-commit
 
 To run zizmor via pre-commit, add the following to your `.pre-commit-config.yaml`:
 
 ```yaml
 repos:
-- repo: https://github.com/woodruffw/zizmor-pre-commit
+- repo: https://github.com/zizmorcore/zizmor-pre-commit
   # Zizmor version.
   rev: v1.7.0
   hooks:
