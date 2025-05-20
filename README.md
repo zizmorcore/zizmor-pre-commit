@@ -1,7 +1,7 @@
 # zizmor-pre-commit
 
-[![image](https://img.shields.io/pypi/v/zizmor/1.8.0rc1.svg)](https://pypi.python.org/pypi/zizmor)
-[![image](https://img.shields.io/pypi/l/zizmor/1.8.0rc1.svg)](https://pypi.python.org/pypi/zizmor)
+[![image](https://img.shields.io/pypi/v/zizmor/1.8.0.svg)](https://pypi.python.org/pypi/zizmor)
+[![image](https://img.shields.io/pypi/l/zizmor/1.8.0.svg)](https://pypi.python.org/pypi/zizmor)
 [![Actions status](https://github.com/zizmorcore/zizmor-pre-commit/workflows/main/badge.svg)](https://github.com/zizmorcore/zizmor-pre-commit/actions)
 
 A [pre-commit](https://pre-commit.com/) hook for [zizmor](https://github.com/zizmorcore/zizmor).
