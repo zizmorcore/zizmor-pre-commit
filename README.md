@@ -17,7 +17,7 @@ To run zizmor via pre-commit, add the following to your `.pre-commit-config.yaml
 repos:
 - repo: https://github.com/zizmorcore/zizmor-pre-commit
   # Zizmor version.
-  rev: v1.8.0rc1
+  rev: v1.8.0rc2rc1
   hooks:
     # Run the linter.
     - id: zizmor
