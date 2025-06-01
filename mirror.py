@@ -34,7 +34,7 @@ def get_all_versions() -> list[Version]:
     if response.status != 200:
         raise RuntimeError("Failed to fetch versions from pypi")
 
-    versions = [Version(release) for release in response.json()["releases"] if re.search(rf"^\d+\.\d+\.\d+$", str(release))]
+    versions = [Version(release) for release in response.json()["releases"] if not Version(release).is_prerelease]
     return sorted(versions)
 
 
