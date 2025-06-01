@@ -17,7 +17,7 @@ def main():
 
     all_versions = get_all_versions()
     current_version = get_current_version(pyproject=pyproject)
-    target_versions = [v for v in all_versions if v > current_version]
+    target_versions = [v for v in all_versions if v > current_version and re.search(rf"^\d+\.\d+\.\d+$", str(v))]
 
     for version in target_versions:
         paths = process_version(version)
