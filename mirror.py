@@ -17,7 +17,7 @@ def main():
 
     all_versions = get_all_versions()
     current_version = get_current_version(pyproject=pyproject)
-    target_versions = [v for v in all_versions if v > current_version and re.search(rf"^\d+\.\d+\.\d+$", str(v))]
+    target_versions = [v for v in all_versions if v > current_version]
 
     for version in target_versions:
         paths = process_version(version)
@@ -34,7 +34,7 @@ def get_all_versions() -> list[Version]:
     if response.status != 200:
         raise RuntimeError("Failed to fetch versions from pypi")
 
-    versions = [Version(release) for release in response.json()["releases"]]
+    versions = [Version(release) for release in response.json()["releases"] if re.search(rf"^\d+\.\d+\.\d+$", str(release))]
     return sorted(versions)
 
 
