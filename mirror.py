@@ -34,21 +34,25 @@ def get_all_versions() -> list[Version]:
     if response.status != 200:
         raise RuntimeError("Failed to fetch versions from pypi")
 
-    versions = [Version(release) for release in response.json()["releases"] if not Version(release).is_prerelease]
+    versions = [
+        Version(release)
+        for release in response.json()["releases"]
+        if not Version(release).is_prerelease
+    ]
     return sorted(versions)
 
 
 def get_current_version(pyproject: dict) -> Version:
     requirements = [Requirement(d) for d in pyproject["project"]["dependencies"]]
     requirement = next((r for r in requirements if r.name == PACKAGE), None)
-    assert (
-        requirement is not None
-    ), f"pyproject.toml does not have {PACKAGE} requirement"
+    assert requirement is not None, (
+        f"pyproject.toml does not have {PACKAGE} requirement"
+    )
 
     specifiers = list(requirement.specifier)
-    assert (
-        len(specifiers) == 1 and specifiers[0].operator == "=="
-    ), f"{PACKAGE}'s specifier should be exact matching, but `{requirement}`"
+    assert len(specifiers) == 1 and specifiers[0].operator == "==", (
+        f"{PACKAGE}'s specifier should be exact matching, but `{requirement}`"
+    )
 
     return Version(specifiers[0].version)
 
