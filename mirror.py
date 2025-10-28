@@ -1,3 +1,11 @@
+# /// script
+# requires-python = ">=3.14"
+# dependencies = [
+#     "packaging",
+#     "urllib3",
+# ]
+# ///
+
 import re
 import subprocess
 import tomllib
