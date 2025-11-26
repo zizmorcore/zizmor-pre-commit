@@ -29,7 +29,7 @@ repos:
 > discover inputs internally. This is both faster and more consistent with how
 > `zizmor` expects to be invoked, but it may be a breaking change for some users
 > who have explicitly configured inputs.
-> 
+>
 > See [zizmor-pre-commit#22] for additional information.
 
 [zizmor-pre-commit#22]: https://github.com/zizmorcore/zizmor-pre-commit/issues/22
