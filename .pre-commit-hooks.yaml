@@ -3,8 +3,9 @@
   description: "Find security issues in GitHub Actions CI/CD setups"
   language: python
   types: [yaml]
-  files: (\.github/(workflows/.*|dependabot.yml))|(action\.ya?ml)$
+  pass_filenames: false
   require_serial: true
   entry: zizmor
   args:
     - "--no-progress" # https://github.com/zizmorcore/zizmor/issues/582
+    - "."
