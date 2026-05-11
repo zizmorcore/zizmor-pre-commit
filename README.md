@@ -23,6 +23,21 @@ repos:
     - id: zizmor
 ```
 
+To autofix issues, set the following args:
+
+```yaml
+repos:
+- repo: https://github.com/zizmorcore/zizmor-pre-commit
+  # Zizmor version.
+  rev: v1.24.1
+  hooks:
+    # Run the linter.
+    - id: zizmor
+      args: [--no-progress, --fix]
+```
+
+(`--no-progress` must be specified since that arg exists in the repo's hook configuration, and `args` overrides all existing args)
+
 [zizmor-pre-commit#22]: https://github.com/zizmorcore/zizmor-pre-commit/issues/22
 
 ## License
