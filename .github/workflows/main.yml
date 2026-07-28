@@ -52,11 +52,24 @@ jobs:
       - name: create release on new tag if new changes exist
         if: env.changes_exist == 'true'
         run: |
-          TAG_NAME=$(git describe --tags $(git rev-list --tags --max-count=1))
-          echo $TAG_NAME
+          TAG_NAME=$(git describe --tags "$(git rev-list --tags --max-count=1)")
+          RELEASE_NOTES_FILE=release-notes.md
+
+          RELEASE_NOTES=$(gh release view "$TAG_NAME" \
+            --repo zizmorcore/zizmor \
+            --json body \
+            --jq '.body // ""')
+
+          if [[ -z "$RELEASE_NOTES" ]]; then
+            RELEASE_NOTES="See: https://github.com/zizmorcore/zizmor/releases/tag/${TAG_NAME}"
+          fi
+
+          printf '%s\n' "$RELEASE_NOTES" > "$RELEASE_NOTES_FILE"
+
+          echo "$TAG_NAME"
           gh release create "$TAG_NAME" \
             --title "$TAG_NAME" \
-            --notes "See: https://github.com/zizmorcore/zizmor/releases/tag/${TAG_NAME}" \
+            --notes-file "$RELEASE_NOTES_FILE" \
             --latest
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
