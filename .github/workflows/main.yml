@@ -43,6 +43,10 @@ jobs:
             echo "changes_exist=true" >> $GITHUB_ENV
           fi
 
+      - name: Test mirrored release
+        if: env.changes_exist == 'true'
+        run: uv run --locked pytest
+
       - name: push changes if they exist
         if: env.changes_exist == 'true'
         run: |
