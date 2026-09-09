@@ -1,0 +1,5 @@
+name: Fixture
+description: Fixture action
+runs:
+  using: composite
+  steps: []

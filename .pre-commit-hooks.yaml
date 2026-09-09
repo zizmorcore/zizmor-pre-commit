@@ -3,7 +3,12 @@
   description: "Find security issues in GitHub Actions CI/CD setups"
   language: python
   types: [yaml]
-  files: (\.github/(workflows/.*|dependabot.ya?ml))|(action\.ya?ml)$
+  # Select the YAML inputs supported by zizmor:
+  # - files directly under any `.github/workflows` directory;
+  # - `.github/dependabot.{yml,yaml}`;
+  # - `action.{yml,yaml}` anywhere; and
+  # - `.pre-commit-{config,hooks}.{yml,yaml}` anywhere.
+  files: (^|/)(\.github/(workflows/[^/]+|dependabot)\.ya?ml|action\.ya?ml|\.pre-commit-(config|hooks)\.ya?ml)$
   require_serial: true
   entry: zizmor
   args:
