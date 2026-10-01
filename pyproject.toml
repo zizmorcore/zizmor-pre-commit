@@ -1,7 +1,7 @@
 [project]
 name = "zizmor-pre-commit"
 version = "0.0.0"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "zizmor==1.30.1",
 ]
