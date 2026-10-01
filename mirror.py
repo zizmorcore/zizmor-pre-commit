@@ -9,7 +9,6 @@
 import re
 import subprocess
 import tomllib
-import typing
 from pathlib import Path
 
 import urllib3
@@ -65,28 +64,20 @@ def get_current_version(pyproject: dict) -> Version:
     return Version(specifiers[0].version)
 
 
-def process_version(version: Version) -> typing.Sequence[str]:
-    def replace_pyproject_toml(content: str) -> str:
-        return re.sub(rf'"{PACKAGE}==.*"', f'"{PACKAGE}=={version}"', content)
+def process_version(version: Version) -> tuple[str, ...]:
+    # NOTE: zizmor is a leaf dependency (it declares no Python dependencies),
+    # so this touches only its own entries in pyproject.toml and uv.lock.
+    subprocess.run(["uv", "add", "--no-sync", f"{PACKAGE}=={version}"], check=True)
 
-    def replace_readme_md(content: str) -> str:
-        content = re.sub(r"rev: v\d+\.\d+\.\d+", f"rev: v{version}", content)
-        return re.sub(
-            rf"/{PACKAGE}/\d+\.\d+\.\d+\.svg", f"/{PACKAGE}/{version}.svg", content
-        )
+    readme = Path("README.md")
+    content = readme.read_text()
+    content = re.sub(r"rev: v\d+\.\d+\.\d+", f"rev: v{version}", content)
+    content = re.sub(
+        rf"/{PACKAGE}/\d+\.\d+\.\d+\.svg", f"/{PACKAGE}/{version}.svg", content
+    )
+    readme.write_text(content)
 
-    paths = {
-        "pyproject.toml": replace_pyproject_toml,
-        "README.md": replace_readme_md,
-    }
-
-    for path, replacer in paths.items():
-        with open(path) as f:
-            content = replacer(f.read())
-        with open(path, mode="w") as f:
-            f.write(content)
-
-    return tuple(paths.keys())
+    return ("pyproject.toml", "uv.lock", "README.md")
 
 
 if __name__ == "__main__":
