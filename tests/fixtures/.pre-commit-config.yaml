@@ -1,0 +1,7 @@
+repos:
+  - repo: local
+    hooks:
+      - id: fixture
+        name: fixture
+        entry: "true"
+        language: system
