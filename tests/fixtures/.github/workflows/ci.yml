@@ -1,0 +1,7 @@
+name: CI
+on: push
+permissions: {}
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps: []
